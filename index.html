@@ -1,225 +1,200 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>MlTeam | Магазин плагинов</title>
+<meta charset="UTF-8">
+<title>TerraStudio | Магазин</title>
 
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-            color: white;
-            text-align: center;
-        }
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: white;
+    text-align: center;
+}
 
-        h1 {
-            margin-top: 40px;
-            font-size: 40px;
-        }
+header {
+    padding: 20px;
+    background: rgba(0,0,0,0.3);
+    backdrop-filter: blur(10px);
+}
 
-        .container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            padding: 50px;
-        }
+h1 {
+    margin: 10px 0;
+}
 
-        .card {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 25px;
-            transition: 0.4s;
-            box-shadow: 0 0 20px rgba(0,0,0,0.4);
-        }
+.switch-buttons {
+    margin-top: 20px;
+}
 
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 0 30px rgba(0,255,255,0.6);
-        }
+.switch-buttons button {
+    padding: 12px 25px;
+    margin: 5px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    background: linear-gradient(45deg, #00c6ff, #0072ff);
+    color: white;
+    transition: 0.3s;
+}
 
-        .price {
-            font-size: 20px;
-            margin: 10px 0;
-            color: #00ffff;
-        }
+.switch-buttons button:hover {
+    transform: scale(1.1);
+}
 
-        .btn {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 12px 25px;
-            font-size: 16px;
-            font-weight: bold;
-            text-decoration: none;
-            color: white;
-            border-radius: 30px;
-            background: linear-gradient(45deg, #00c6ff, #0072ff);
-            transition: 0.3s;
-            box-shadow: 0 0 15px rgba(0,114,255,0.7);
-        }
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    padding: 40px;
+}
 
-        .btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 25px rgba(0,255,255,1);
-        }
+.card {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 20px;
+    transition: 0.4s;
+    box-shadow: 0 0 15px rgba(0,0,0,0.4);
+}
 
-        footer {
-            margin: 40px 0;
-            opacity: 0.7;
-        }
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 25px rgba(0,255,255,0.6);
+}
 
-        /* Кнопка поддержки */
-        .open-support {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            padding: 15px 25px;
-            border: none;
-            border-radius: 50px;
-            font-weight: bold;
-            background: linear-gradient(45deg, #ff416c, #ff4b2b);
-            color: white;
-            cursor: pointer;
-            box-shadow: 0 0 20px rgba(255,75,43,0.7);
-        }
+.price {
+    margin: 10px 0;
+    color: #00ffff;
+    font-size: 18px;
+}
 
-        /* Модальное окно */
-        .support-modal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.7);
-            justify-content: center;
-            align-items: center;
-        }
+.btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    background: linear-gradient(45deg, #ff416c, #ff4b2b);
+    color: white;
+    transition: 0.3s;
+}
 
-        .support-content {
-            background: #1e1e1e;
-            padding: 30px;
-            border-radius: 20px;
-            width: 350px;
-        }
+.btn:hover {
+    transform: scale(1.1);
+}
 
-        .support-content h2 {
-            margin-top: 0;
-        }
-
-        .support-content input,
-        .support-content textarea {
-            width: 100%;
-            margin: 10px 0;
-            padding: 10px;
-            border-radius: 10px;
-            border: none;
-        }
-
-        .support-content textarea {
-            height: 100px;
-            resize: none;
-        }
-
-        .send-btn {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 20px;
-            background: linear-gradient(45deg, #00c6ff, #0072ff);
-            color: white;
-            cursor: pointer;
-            font-weight: bold;
-            width: 100%;
-        }
-
-        .close {
-            float: right;
-            font-size: 22px;
-            cursor: pointer;
-        }
-    </style>
-</head>
-
-<body>
-
-<h1>🚀 MlTeam Plugin Store</h1>
-
-<div class="container">
-
-    <div class="card">
-        <h2>⚔️ PvP Arena System</h2>
-        <p>Полная система арен с рейтингом и наградами.</p>
-        <div class="price">Цена: 299₽</div>
-        <a class="btn" href="https://t.me/MlTeam_Gg?text=Хочу заказать PvP Arena System">Заказать</a>
-    </div>
-
-    <div class="card">
-        <h2>🏆 AutoDonate Manager</h2>
-        <p>Автоматическая выдача доната и привилегий.</p>
-        <div class="price">Цена: 399₽</div>
-        <a class="btn" href="https://t.me/MlTeam_Gg?text=Хочу заказать AutoDonate Manager">Заказать</a>
-    </div>
-
-    <div class="card">
-        <h2>💰 EconomyX</h2>
-        <p>Продвинутая экономика с банком и топами.</p>
-        <div class="price">Цена: 249₽</div>
-        <a class="btn" href="https://t.me/MlTeam_Gg?text=Хочу заказать EconomyX">Заказать</a>
-    </div>
-
-    <div class="card">
-        <h2>📦 CrateCase Pro</h2>
-        <p>Система кейсов с анимацией открытия.</p>
-        <div class="price">Цена: 349₽</div>
-        <a class="btn" href="https://t.me/MlTeam_Gg?text=Хочу заказать CrateCase Pro">Заказать</a>
-    </div>
-
-    <div class="card">
-        <h2>🛡 Advanced AntiCheat</h2>
-        <p>Умная защита от читеров.</p>
-        <div class="price">Цена: 499₽</div>
-        <a class="btn" href="https://t.me/MlTeam_Gg?text=Хочу заказать Advanced AntiCheat">Заказать</a>
-    </div>
-
-    <div class="card">
-        <h2>🌍 MultiWorld Manager</h2>
-        <p>Удобное управление мирами сервера.</p>
-        <div class="price">Цена: 279₽</div>
-        <a class="btn" href="https://t.me/MlTeam_Gg?text=Хочу заказать MultiWorld Manager">Заказать</a>
-    </div>
-
-</div>
-
-<footer>
-    © 2026 MlTeam_Gg | Все права защищены
-</footer>
-
-<!-- Кнопка поддержки -->
-<button class="open-support" onclick="openSupport()">💬 Техподдержка</button>
-
-<!-- Окно поддержки -->
-<div id="supportModal" class="support-modal">
-  <div class="support-content">
-    <span class="close" onclick="closeSupport()">&times;</span>
-    <h2>Техническая поддержка</h2>
-
-    <form action="https://formspree.io/f/xaqdkjdz" method="POST">
-      <input type="text" name="name" placeholder="Ваше имя" required>
-      <input type="email" name="email" placeholder="Ваша почта" required>
-      <textarea name="message" placeholder="Опишите проблему..." required></textarea>
-      <button type="submit" class="send-btn">Отправить</button>
-    </form>
-
-  </div>
-</div>
+.hidden {
+    display: none;
+}
+</style>
 
 <script>
-function openSupport() {
-    document.getElementById("supportModal").style.display = "flex";
+function showPlugins() {
+    document.getElementById("plugins").classList.remove("hidden");
+    document.getElementById("mods").classList.add("hidden");
 }
 
-function closeSupport() {
-    document.getElementById("supportModal").style.display = "none";
+function showMods() {
+    document.getElementById("mods").classList.remove("hidden");
+    document.getElementById("plugins").classList.add("hidden");
 }
 </script>
+
+</head>
+<body>
+
+<header>
+    <h1>TerraStudio Магазин</h1>
+    <div class="switch-buttons">
+        <button onclick="showPlugins()">Плагины</button>
+        <button onclick="showMods()">Моды</button>
+    </div>
+</header>
+
+<!-- ПЛАГИНЫ -->
+<div id="plugins" class="container">
+
+    <div class="card">
+        <h2>⚡ UltraProtect</h2>
+        <div class="price">Цена: 299₽</div>
+        <a class="btn" href="https://t.me/MlTeam_Gg?text=Хочу UltraProtect">Купить</a>
+    </div>
+
+    <div class="card">
+        <h2>🏰 TerraAdmin</h2>
+        <div class="price">Цена: 399₽</div>
+        <a class="btn" href="https://t.me/MlTeam_Gg?text=Хочу TerraAdmin">Купить</a>
+    </div>
+
+    <div class="card">
+        <h2>💎 EconomyPro</h2>
+        <div class="price">Цена: 349₽</div>
+        <a class="btn" href="https://t.me/MlTeam_Gg?text=Хочу EconomyPro">Купить</a>
+    </div>
+
+    <div class="card">
+        <h2>🎮 ServerCore</h2>
+        <div class="price">Цена: 499₽</div>
+        <a class="btn" href="https://t.me/MlTeam_Gg?text=Хочу ServerCore">Купить</a>
+    </div>
+
+    <div class="card">
+        <h2>🔒 AntiCheatX</h2>
+        <div class="price">Цена: 599₽</div>
+        <a class="btn" href="https://t.me/MlTeam_Gg?text=Хочу AntiCheatX">Купить</a>
+    </div>
+
+    <div class="card">
+        <h2>🌍 MultiWorld+</h2>
+        <div class="price">Цена: 450₽</div>
+        <a class="btn" href="https://t.me/MlTeam_Gg?text=Хочу MultiWorld+">Купить</a>
+    </div>
+
+</div>
+
+<!-- МОДЫ -->
+<div id="mods" class="container hidden">
+
+    <div class="card">
+        <h2>🔥 MagicExpansion</h2>
+        <div class="price">Цена: 399₽</div>
+        <a class="btn" href="https://t.me/MlTeam_Gg?text=Хочу MagicExpansion">Купить</a>
+    </div>
+
+    <div class="card">
+        <h2>⚔️ WarWeapons</h2>
+        <div class="price">Цена: 449₽</div>
+        <a class="btn" href="https://t.me/MlTeam_Gg?text=Хочу WarWeapons">Купить</a>
+    </div>
+
+    <div class="card">
+        <h2>🚀 SpaceAdventure</h2>
+        <div class="price">Цена: 599₽</div>
+        <a class="btn" href="https://t.me/MlTeam_Gg?text=Хочу SpaceAdventure">Купить</a>
+    </div>
+
+    <div class="card">
+        <h2>🐉 DragonWorld</h2>
+        <div class="price">Цена: 499₽</div>
+        <a class="btn" href="https://t.me/MlTeam_Gg?text=Хочу DragonWorld">Купить</a>
+    </div>
+
+    <div class="card">
+        <h2>🏗 BuilderPlus</h2>
+        <div class="price">Цена: 350₽</div>
+        <a class="btn" href="https://t.me/MlTeam_Gg?text=Хочу BuilderPlus">Купить</a>
+    </div>
+
+    <div class="card">
+        <h2>🌋 SurvivalHardcore</h2>
+        <div class="price">Цена: 399₽</div>
+        <a class="btn" href="https://t.me/MlTeam_Gg?text=Хочу SurvivalHardcore">Купить</a>
+    </div>
+
+</div>
 
 </body>
 </html>
